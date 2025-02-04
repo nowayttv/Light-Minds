@@ -2,19 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>A-Frame Dynamic Numbered Walls Example</title>
+    <title>A-Frame Dynamic Room in Industrial Hall</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const scene = document.querySelector('a-scene');
         const wallData = [
-          { position: '0 2.5 -5', rotation: '0 0 0', id: 1 },
-          { position: '0 2.5 5', rotation: '0 180 0', id: 2 },
-          { position: '-5 2.5 0', rotation: '0 90 0', id: 3 },
-          { position: '5 2.5 0', rotation: '0 -90 0', id: 4 },
+          { position: '0 2.5 -5', rotation: '0 0 0', id: 1, hasWindow: false, hasDoor: true },
+          { position: '0 2.5 5', rotation: '0 180 0', id: 2, hasWindow: true, hasDoor: false },
+          { position: '-5 2.5 0', rotation: '0 90 0', id: 3, hasWindow: false, hasDoor: false },
+          { position: '5 2.5 0', rotation: '0 -90 0', id: 4, hasWindow: true, hasDoor: false },
         ];
-
-        let currentWallIndex = 0;
 
         function createWall(data) {
           const wall = document.createElement('a-box');
@@ -24,6 +22,7 @@
           wall.setAttribute('height', '5');
           wall.setAttribute('depth', '0.1');
           wall.setAttribute('color', '#FFC65D');
+          wall.setAttribute('shadow', 'cast: true; receive: true');
           wall.setAttribute('id', `wall-${data.id}`);
 
           const text = document.createElement('a-text');
@@ -34,77 +33,115 @@
           text.setAttribute('color', '#000');
           wall.appendChild(text);
 
+          if (data.hasWindow) {
+            const window = document.createElement('a-box');
+            window.setAttribute('position', '0 1 0.05');
+            window.setAttribute('width', '2');
+            window.setAttribute('height', '2');
+            window.setAttribute('depth', '0.05');
+            window.setAttribute('color', '#FFFFFF');
+            wall.appendChild(window);
+          }
+
+          if (data.hasDoor) {
+            const door = document.createElement('a-box');
+            door.setAttribute('position', '0 -1 0.05');
+            door.setAttribute('width', '2');
+            door.setAttribute('height', '3');
+            door.setAttribute('depth', '0.05');
+            door.setAttribute('color', '#8B4513');
+            wall.appendChild(door);
+          }
+
           scene.appendChild(wall);
         }
 
-        function animateWall() {
-          if (currentWallIndex >= wallData.length) {
-            currentWallIndex = 0;
-          }
-
-          const wallId = `wall-${wallData[currentWallIndex].id}`;
-          const wall = document.querySelector(`#${wallId}`);
+        function animateWall(wall) {
+          const randomX = Math.random() > 0.5 ? 5 : -5;
+          const randomZ = Math.random() > 0.5 ? 5 : -5;
 
           wall.setAttribute('animation', {
             property: 'position',
-            to: `${wall.getAttribute('position').x} -2 ${wall.getAttribute('position').z}`,
-            dur: 2000,
-            easing: 'linear',
-          });
-
-          wall.setAttribute('animation__rotation', {
-            property: 'rotation',
-            to: `${wall.getAttribute('rotation').x} 0 ${wallData[currentWallIndex].rotation.includes('90') ? '90' : '-90'}`,
+            to: `${randomX} -2 ${randomZ}`,
             dur: 2000,
             easing: 'linear',
           });
 
           setTimeout(() => {
             wall.parentNode.removeChild(wall);
-            createWallFromAbove(wallData[currentWallIndex]);
-            currentWallIndex++;
-            setTimeout(animateWall, 2000);
+            createWallFromAbove(wall.getAttribute('rotation'));
           }, 2000);
         }
 
-        function createWallFromAbove(data) {
-          const newPosition = data.rotation.includes('90') || data.rotation.includes('-90') ? `${data.position.split(' ')[0]} 7.5 ${data.position.split(' ')[2]}` : `0 7.5 ${data.position.split(' ')[2]}`;
-          createWall({ ...data, position: newPosition });
+        function createWallFromAbove(rotation) {
+          const positionY = 7.5;
+          const positionX = (rotation.y === 90 || rotation.y === -90) ? 5 : 0;
+          const positionZ = (rotation.y === 0 || rotation.y === 180) ? 5 : 0;
+          const newPosition = `${positionX} ${positionY} ${positionZ}`;
+          wallData.forEach(data => {
+            if (`0 0 ${data.id}` === rotation) {
+              createWall({ ...data, position: newPosition });
+            }
+          });
+        }
+
+        function startWallAnimation() {
+          const randomIndex = Math.floor(Math.random() * wallData.length);
+          const wallId = `wall-${wallData[randomIndex].id}`;
+          const wall = document.querySelector(`#${wallId}`);
+          animateWall(wall);
+          setTimeout(startWallAnimation, 4000);
         }
 
         // Initial walls
         wallData.forEach(createWall);
 
         // Start animation
-        setTimeout(animateWall, 2000);
+        setTimeout(startWallAnimation, 2000);
       });
     </script>
   </head>
   <body>
-    <a-scene>
+    <a-scene shadow="type: pcfsoft">
       <!-- Room floor -->
       <a-plane 
         position="0 0 0" 
         rotation="-90 0 0" 
         width="10" 
         height="10" 
-        color="#7BC8A4">
+        color="#7BC8A4"
+        shadow="receive: true">
       </a-plane>
 
-      <!-- Room ceiling -->
+      <!-- Industrial hall floor -->
       <a-plane 
-        position="0 5 0" 
-        rotation="90 0 0" 
-        width="10" 
-        height="10" 
-        color="#7BC8A4">
+        position="0 -10 0" 
+        rotation="-90 0 0" 
+        width="100" 
+        height="100" 
+        color="#333"
+        shadow="receive: true">
       </a-plane>
+
+      <!-- Light source above -->
+      <a-light 
+        type="directional" 
+        position="0 20 0" 
+        intensity="1"
+        castShadow="true">
+      </a-light>
 
       <!-- Camera entity for the user -->
       <a-entity 
         position="0 1.6 0">
         <a-camera></a-camera>
       </a-entity>
+
+      <!-- Optional: Add some industrial structures around -->
+      <a-box position="-15 0 -15" width="4" height="20" depth="4" color="#555"></a-box>
+      <a-box position="15 0 -15" width="4" height="20" depth="4" color="#555"></a-box>
+      <a-box position="-15 0 15" width="4" height="20" depth="4" color="#555"></a-box>
+      <a-box position="15 0 15" width="4" height="20" depth="4" color="#555"></a-box>
     </a-scene>
   </body>
 </html>
