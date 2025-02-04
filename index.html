@@ -2,51 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>A-Frame Dynamic Walls Example</title>
+    <title>A-Frame Room Example</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const scene = document.querySelector('a-scene');
-
-        function createWall(position, rotation) {
-          const wall = document.createElement('a-box');
-          wall.setAttribute('position', position);
-          wall.setAttribute('rotation', rotation);
-          wall.setAttribute('width', '10');
-          wall.setAttribute('height', '5');
-          wall.setAttribute('depth', '0.1');
-          wall.setAttribute('color', '#FFC65D');
-          scene.appendChild(wall);
-
-          animateWall(wall);
-        }
-
-        function animateWall(wall) {
-          wall.setAttribute('animation', {
-            property: 'position',
-            to: `${wall.getAttribute('position').x} -2 ${wall.getAttribute('position').z}`,
-            dur: 3000,
-            easing: 'linear'
-          });
-
-          setTimeout(() => {
-            wall.parentNode.removeChild(wall);
-            createWallFromAbove(wall.getAttribute('rotation'));
-          }, 3000);
-        }
-
-        function createWallFromAbove(rotation) {
-          const position = rotation.y === 90 || rotation.y === -90 ? '5 7.5 0' : '0 7.5 5';
-          createWall(position, rotation);
-        }
-
-        // Initial walls
-        createWall('0 2.5 -5', '0 0 0');
-        createWall('0 2.5 5', '0 180 0');
-        createWall('-5 2.5 0', '0 90 0');
-        createWall('5 2.5 0', '0 -90 0');
-      });
-    </script>
   </head>
   <body>
     <a-scene>
@@ -58,6 +15,39 @@
         height="10" 
         color="#7BC8A4">
       </a-plane>
+
+      <!-- Room walls -->
+      <a-box 
+        position="0 2.5 -5" 
+        width="10" 
+        height="5" 
+        depth="0.1" 
+        color="#FFC65D">
+      </a-box>
+      <a-box 
+        position="0 2.5 5" 
+        width="10" 
+        height="5" 
+        depth="0.1" 
+        rotation="0 180 0" 
+        color="#FFC65D">
+      </a-box>
+      <a-box 
+        position="-5 2.5 0" 
+        width="10" 
+        height="5" 
+        depth="0.1" 
+        rotation="0 90 0" 
+        color="#FFC65D">
+      </a-box>
+      <a-box 
+        position="5 2.5 0" 
+        width="10" 
+        height="5" 
+        depth="0.1" 
+        rotation="0 -90 0" 
+        color="#FFC65D">
+      </a-box>
 
       <!-- Room ceiling -->
       <a-plane 
