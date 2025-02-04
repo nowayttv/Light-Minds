@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>
-        
-    </script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-environment-component@1.3.7/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    
+    <a-scene stats>
+
+
+      
+      <a-entity id="scene" rotation="0 180 0">
+
+      <a-image id="ombre" src="./files/3D/Ombre-chameau.jpg" material="blending: multiply" position="3.05986 0.05899 4.83185" rotation="89.99963750135457 60.87905756383049 0" scale="1 1.8607 1"></a-image>        
+<a-entity id="serpent" gltf-model="./files/3D/snake_attack_animations_multiple.glb" animation-mixer="" position="6.69488 0.02935 6.44419" scale="0.01 0.01 0.01" rotation="0 111.70155990752477 0"></a-entity>
+        <a-image id="ombre" src="./files/3D/Ombre-chameau.jpg" material="blending: multiply" position="3.05986 0.05899 4.83185" rotation="89.99963750135457 60.87905756383049 0" scale="1 1.8607 1"></a-image>        
+        <a-sky id="desert" src="./files/panorama/6desert.jpg " material="src: ./files/panorama/6desert.jpg" rotation="0 -54.3714029267346 0"></a-sky>
+        <a-image id="ombre-tente" src="./files/3D/ombre-tente.jpg" material="blending: additive; color: #0d0d0d" position="0 0.03415 0.00036" rotation="89.39631294308182 179.99927500270914 179.9998479605043" scale="11.08266 6.34633 1"></a-image>       
+        <a-image id="ombre" src="./files/3D/Ombre-chameau.jpg" material="blending: multiply" position="-2.80668 0.04308 5.79135" rotation="90.00021045914971 -27.82397644714304 0" scale="1.49152 2.42212 1"></a-image>     
+        <a-entity id="sable" obj-model="mtl: ./files/sol/sable.mtl; obj: ./files/sol/sable.obj" rotation="90 90 90" position="0 0 14.43693" ></a-entity> 
+<a-entity id="canaper" gltf-model="./files/3D/canape.glb" position="3.07316 -0.02028 2.75196" rotation="0 -91.3346291640094 0" scale="1.32668 1.19376 1.50095"></a-entity>
+        <a-image id="ombre-tente" src="./files/3D/ombre-tente.jpg" material="blending: additive; color: #0d0d0d" position="0 0.03415 0.00036" rotation="89.39631294308182 179.99927500270914 179.9998479605043" scale="11.08266 6.34633 1"></a-image>        
+        <a-image id="ombre" src="./files/3D/Ombre-chameau.jpg" material="blending: multiply" position="-2.80668 0.04308 5.79135" rotation="90.00021045914971 -27.82397644714304 0" scale="1.49152 2.42212 1"></a-image>  
+        <a-entity id="sable" obj-model="mtl: ./files/sol/sable.mtl; obj: ./files/sol/sable.obj" rotation="90 90 90" position="0 0 14.43693" ></a-entity> 
+      <a-entity id="tente" gltf-model="./files/3D/modern_bedouin_tent_-_type_1__high_poly/scene.gltf"></a-entity>
+      <a-entity id="soleil" light="intensity: 0.4; castShadow: true; shadowCameraVisible: true" position="-0.6961 7.18563 -14.97345"></a-entity>
+      <a-entity id="feux">
+        <a-entity id="anim" gltf-model="./files/3D/animated_fire.glb" animation-mixer position="0 0 4.867"></a-entity>
+        <a-entity id="lumiere feu" light="color: #ff8040; groundColor: #e07b29; intensity: 0.08; type: point; castShadow: true; shadowCameraFar: 500.04; shadowCameraVisible: true" position="0 0.59662 4.867" animation="property: light.intensity; to: 1 ; dur: 2 ; loop: true"></a-entity>    
+      </a-entity>
+      <a-entity id="caisse" obj-model="obj: ./files/3D/CAISSE/caisse.obj" position="-4.364 1.16606 -1.67648" rotation="0 81.38922775612856 0" scale="0.03 0.03 0.03"></a-entity>    
+      <a-entity id="caisse" obj-model="obj: ./files/3D/CAISSE/caisse.obj" position="-4.364 1.16606 -1.67648" rotation="0 81.38922775612856 0" scale="0.03 0.03 0.03" sound="src: ./files/sound/mario-meow.mp3; on: click"></a-entity>    
+      <a-entity id="caisse-2" obj-model="obj: ./files/3D/CAISSE/caisse.obj" position="-4.364 1.14666 -0.15498" rotation="0 90 0" scale="0.03 0.03 0.03"></a-entity>
+      <a-entity id="chameaux" gltf-model="./files/3D/bactrian_camel_low_poly(1).glb" animation-mixer="" position="3.23374 0 5.03875" rotation="0 -130.56161164984607 0"></a-entity>  
+      <a-entity id="table" gltf-model="./files/3D/middle_aged_ottoman_table/scene.gltf" scale="0.006 0.006 0.006" position="-0.16356 0.19523 1.46662" rotation="0 29.250068399223657 0"></a-entity>
+      <a-entity id="lampe" gltf-model="./files/3D/oil_lamp_lowpoly.glb" scale="0.02 0.02 0.02" position="-0.58349 0.18048 1.12288"></a-entity>
+      <a-entity id="sac_pieces" gltf-model="./files/3D/coin_pouch.glb" scale="100 100 100" position="0 0.18122 1.27275" rotation="0 -73.96827839359415 0"></a-entity>
+      <a-entity id="oud" gltf-model="./files/3D/3d_oud.glb" sound="autoplay: true; src: ./files/sound/serpent.mp3; volume: 0.2" position="1.58318 -0.08294 0.37852" rotation="4.085762037077901 85.03152045977524 -17.54625951808633"></a-entity>  
+      <a-entity id="tapis" gltf-model="./files/3D/carpet_carpet.glb" scale="0.01 0.01 0.01" position="0 0.05964 0" rotation="1.4054654714559094 -7.432981476232171 0.42685355737246333"></a-entity>      </a-entity>
+      <a-entity id="dromadaire" gltf-model="./files/3D/camel-download-the-original-glb/source/camel.glb" animation-mixer="" scale="0.5 0.5 0.5" position="2.99903 0 -6.0199" rotation="0 -28.85071681601747 0" sound="src: ./files/sound/mario-meow.mp3"; on: click"></a-entity>      
+      <a-entity id="assiete" gltf-model="./files/3D/assietteplate.glb" scale="0.001 0.001 0.001" position="-0.3262 0.29825 -1.95047"></a-entity>   
+      <a-entity id="coussins" gltf-model="./files/3D/cushion_3.glb" position="0.82569 0.09978 0.11371" rotation="0 -14.795489143663248 0"></a-entity>      
+      <a-entity id="tonneau" gltf-model="./files/3D/tonneaupourtextures.glb" scale="0.005 0.005 0.005" position="3.71254 1.54487 0.72485"></a-entity>
+      <a-entity id="coussins" gltf-model="./files/3D/cushion_3.glb" position="0.82569 0.09978 0.11371" rotation="0 -14.795489143663248 0"></a-entity>     
+      <a-entity id="tonneau" gltf-model="./files/3D/tonneaupourtextures.glb" scale="0.01 0.01 0.01" position="-4.20131 0.92309 -1.59304"></a-entity>     
+      <a-entity id="tonneau" gltf-model="./files/3D/tonneaupourtextures.glb" scale="0.005 0.005 0.005" position="-2.15172 0.51752 -5.9435"></a-entity>    
+      <a-entity id="horizon" rotation="0 0 0" animation="property: rotation; to: 0 359 0; dur: 20000; loop: true; easing: linear">
+      <a-entity id="avion" gltf-model="./files/3D/biplane_trouble_in_paradise_asset.glb" scale="0.01 0.01 0.01" position="0 10.16539 -45.36297" rotation="0 -90.00021045914971 -23.8843186478235" animation-mixer sound="loop: true; autoplay: true; src: ./files/sound/avion.mp3; volume: .5" ></a-entity>  
+           </a-entity>    
+      
+    <a-entity id="floppa-saute" animation="dir: alternate; dur: 400; easing: linear; loop: true; property: position; to: 0 1 0">
+<a-entity id="floppa2" gltf-model="./files/3D/raise_a_floppa_cube.glb" position="-3.98377 0.91284 1.8449" rotation="0 -68.32063340698963 0" scale="0.5 0.5 0.5" sound="src: ./files/sound/mario-meow.mp3" ;="" on:="" click"=""></a-entity>
+  </a-entity>
+   
+
+
+<a-entity id="cratere" gltf-model="./files/3D/meteor_crater__winslow_arizona.glb" scale="0.015 0.015 0.015" position="0 -24.34499 -3.5846"></a-entity>    </a-scene>
   </body>
 </html>
