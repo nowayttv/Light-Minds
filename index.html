@@ -2,8 +2,83 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>A-Frame Room Example</title>
+    <title>A-Frame Dynamic Numbered Walls Example</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const scene = document.querySelector('a-scene');
+        const wallData = [
+          { position: '0 2.5 -5', rotation: '0 0 0', id: 1 },
+          { position: '0 2.5 5', rotation: '0 180 0', id: 2 },
+          { position: '-5 2.5 0', rotation: '0 90 0', id: 3 },
+          { position: '5 2.5 0', rotation: '0 -90 0', id: 4 },
+        ];
+
+        let currentWallIndex = 0;
+
+        function createWall(data) {
+          const wall = document.createElement('a-box');
+          wall.setAttribute('position', data.position);
+          wall.setAttribute('rotation', data.rotation);
+          wall.setAttribute('width', '10');
+          wall.setAttribute('height', '5');
+          wall.setAttribute('depth', '0.1');
+          wall.setAttribute('color', '#FFC65D');
+          wall.setAttribute('id', `wall-${data.id}`);
+
+          const text = document.createElement('a-text');
+          text.setAttribute('value', data.id);
+          text.setAttribute('position', '0 0.5 0.1');
+          text.setAttribute('rotation', '0 0 0');
+          text.setAttribute('align', 'center');
+          text.setAttribute('color', '#000');
+          wall.appendChild(text);
+
+          scene.appendChild(wall);
+        }
+
+        function animateWall() {
+          if (currentWallIndex >= wallData.length) {
+            currentWallIndex = 0;
+          }
+
+          const wallId = `wall-${wallData[currentWallIndex].id}`;
+          const wall = document.querySelector(`#${wallId}`);
+
+          wall.setAttribute('animation', {
+            property: 'position',
+            to: `${wall.getAttribute('position').x} -2 ${wall.getAttribute('position').z}`,
+            dur: 2000,
+            easing: 'linear',
+          });
+
+          wall.setAttribute('animation__rotation', {
+            property: 'rotation',
+            to: `${wall.getAttribute('rotation').x} 0 ${wallData[currentWallIndex].rotation.includes('90') ? '90' : '-90'}`,
+            dur: 2000,
+            easing: 'linear',
+          });
+
+          setTimeout(() => {
+            wall.parentNode.removeChild(wall);
+            createWallFromAbove(wallData[currentWallIndex]);
+            currentWallIndex++;
+            setTimeout(animateWall, 2000);
+          }, 2000);
+        }
+
+        function createWallFromAbove(data) {
+          const newPosition = data.rotation.includes('90') || data.rotation.includes('-90') ? `${data.position.split(' ')[0]} 7.5 ${data.position.split(' ')[2]}` : `0 7.5 ${data.position.split(' ')[2]}`;
+          createWall({ ...data, position: newPosition });
+        }
+
+        // Initial walls
+        wallData.forEach(createWall);
+
+        // Start animation
+        setTimeout(animateWall, 2000);
+      });
+    </script>
   </head>
   <body>
     <a-scene>
@@ -15,39 +90,6 @@
         height="10" 
         color="#7BC8A4">
       </a-plane>
-
-      <!-- Room walls -->
-      <a-box 
-        position="0 2.5 -5" 
-        width="10" 
-        height="5" 
-        depth="0.1" 
-        color="#FFC65D">
-      </a-box>
-      <a-box 
-        position="0 2.5 5" 
-        width="10" 
-        height="5" 
-        depth="0.1" 
-        rotation="0 180 0" 
-        color="#FFC65D">
-      </a-box>
-      <a-box 
-        position="-5 2.5 0" 
-        width="10" 
-        height="5" 
-        depth="0.1" 
-        rotation="0 90 0" 
-        color="#FFC65D">
-      </a-box>
-      <a-box 
-        position="5 2.5 0" 
-        width="10" 
-        height="5" 
-        depth="0.1" 
-        rotation="0 -90 0" 
-        color="#FFC65D">
-      </a-box>
 
       <!-- Room ceiling -->
       <a-plane 
