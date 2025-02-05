@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene stats>
+    <a-scene>
       <a-entity id="lampe" gltf-model="./lampe/lampe_STI2D.glb" scale="10 10 10"></a-entity>      
       <a-sky id="ciel" color="#000000"></a-sky>
       <a-box id="sol" position="1 1 1" scale="10 10 10"></a-box>
@@ -14,7 +14,7 @@
       <a-image id="mur-2" src="./lampe/lampe1.jpg"></a-image>
       <a-image id="mur-3" src="./lampe/lampe2.jpg"></a-image>
       <a-image id="mur-4" src="./lampe/lampe2.jpg"></a-image>
-      <a-light id="lampe1" light="intensity: 0.4; castShadow: true; shadowCameraVisible: true"></a-light>
+      <a-light id="lampe1" light="intensity: 0.4; castShadow: true"></a-light>
   </a-scene>
   </body>
 </html>
