@@ -9,6 +9,9 @@ Projet de présentation de la classe de première des STI2D du lycée Louis de C
 
 # Credits
 
-Idée, réalisation : Matthieu Farcot
-Co réalisation, modelisation : Alexis
+- Idée, réalisation : Matthieu Farcot
+- Co réalisation, modelisation : Alexis
+
+
+
 ... A compléter
