@@ -14,6 +14,9 @@
         <a-box id="sol" position="0 0 0" scale="1 0.01 1" material=""></a-box>      
       </a-entity>
       <a-light id="lumiere_filante" light="color: #9aa60e; intensity: 0.4; type: point; castShadow: true" position="0 0 0" animation="dir: alternate; dur: 10000; easing: linear; loop: true; property: position; to: 0 15 0"></a-light>
+      <a-entity id="rotation lumiere" position="0 0 10" rotation="0 0 0" animation="dur: 10000; easing: linear; loop: true; property: rotation; to: 0 359 0">     
+        <a-light id="lumiere_filante" light="color: #ff0000; intensity: 0.4; type: point; castShadow: true" position="0 0 0" animation="dir: alternate; dur: 10000; easing: linear; loop: true; property: position; to: 0 15 0"></a-light>
+      </a-entity>
     </a-scene>
   </body>
 </html>
