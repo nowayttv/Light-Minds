@@ -7,14 +7,10 @@
   </head>
   <body>
     <a-scene>
-      <a-entity id="lampe" gltf-model="./lampe/lampe_STI2D.glb" scale="10 10 10"></a-entity>      
+      <a-entity id="lampe" gltf-model="./lampe/lampe_STI2D.glb" scale="20 20 20" position="0 -0.4787 0"></a-entity>      
       <a-sky id="ciel" color="#000000"></a-sky>
-      <a-box id="sol" position="1 1 1" scale="10 10 10"></a-box>
-      <a-image id="mur-1" src="./lampe/lampe1.jpg"></a-image>
-      <a-image id="mur-2" src="./lampe/lampe1.jpg"></a-image>
-      <a-image id="mur-3" src="./lampe/lampe2.jpg"></a-image>
-      <a-image id="mur-4" src="./lampe/lampe2.jpg"></a-image>
-      <a-light id="lampe1" light="intensity: 0.4; castShadow: true"></a-light>
-  </a-scene>
+      <a-box id="sol" position="0 -0.48359 0" scale="1 0.01 1" material=""></a-box>      
+      <a-light id="lampe1" light="intensity: 0.4; type: point; castShadow: true"></a-light>
+    </a-scene>
   </body>
 </html>
