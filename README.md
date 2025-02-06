@@ -12,6 +12,12 @@ Projet de présentation de la classe de première des STI2D du lycée Louis de C
 - Idée, réalisation : Matthieu Farcot
 - Co réalisation, modelisation : Alexis
 
+# Licence
+
+Cette page, son contenu et le code A-Frame est sous licence Creative Common CC BY-SA 4.0.
+
+La librairie javascript A-frame v1.6 est sous licence MIT.
+
 
 
 ... A compléter
