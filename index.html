@@ -11,50 +11,33 @@ Copyright Notice to be developped
   <body>
     <a-scene shadow="type: pcfsoft" stats>
   
-     
       <a-box id="sol" material="src:./Images/METAL.jpg" rotation="-90 0 0" scale="8 8 1" shadow="cast: true; receive: true"></a-box>
 
-      
       <a-camera id="vue" position="0 1.7 0"></a-camera>
       <a-sky id="ciel" color="#000000"></a-sky>
       
-<a-entity id="Arco-lampe" gltf-model="./Arco-floor-lamp/pieds_de_lampe.glb" scale="10 10 10" position="2.8114 1.51705 -0.61014" rotation="90.00021045914971 -41.32859167837654 0" shadow="cast: true; receive: true"></a-entity>
+      <a-entity id="Arco-lampe" gltf-model="./Arco-floor-lamp/pieds_de_lampe.glb" scale="10 10 10" position="2.8114 1.51705 -0.61014" rotation="90.00021045914971 -41.32859167837654 0" shadow="cast: true; receive: true"></a-entity>
       
-<a-entity id="tete-lampe" obj-model="obj: ./lampe/obj/lampe_tete.obj" color="black" position="1.58858 1.58914 0.80391" scale="0.01 0.01 0.01"shadow="cast: true; receive: true"></a-entity>   
+      <a-entity id="tete-lampe" obj-model="obj: ./lampe/obj/lampe_tete.obj" color="black" position="1.58858 1.58914 0.80391" scale="0.01 0.01 0.01"shadow="cast: true; receive: true"></a-entity>   
 
       <a-light id="lumiere_Arco" light="color: #FFFFFF; intensity: 0.2; type: point; castShadow: true" position="1.64807 1.90866 0.85405"></a-light>
 
       <a-entity id="table" obj-model="mtl: ./table/table08-1A.mtl; obj: ./table/table08-1A.obj" scale="0.015 0.015 0.015" position="1.60743 0 0.80633" shadow=""></a-entity>
       
       <a-entity id="lampe-table" gltf-model="./lampe/lampe_STI2D.glb" scale="5 5 5" position="1.65063 1.1505 0.84026" shadow="cast: true; receive: true"></a-entity>
-
-
-
-      
-<a-entity id="mur1" obj-model="obj: ./lampe/obj/1.obj" scale="200 200 200" position="0 0 3.866" rotation="0 0 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: 179 0 0"; loop="true" ></a-entity>
-      
-<a-entity id="mur2" obj-model="obj: ./lampe/obj/1.obj" scale="200 200 200" position="0 0 -3.85199" rotation="0 0 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: -179 0 0" loop="true></a-entity>
-  
-<a-entity id="mur3" obj-model="obj: ./lampe/obj/2.obj" position="-3.85914 0 0" scale="200 200 200" rotation="0 90 0" shadow="cast: true; receive: true" animation="dir: alternate ;dur: 10000; easing: linear; property: rotation; to: -181 90 0" loop="true ></a-entity>
-      
-<a-entity id="mur4" obj-model="obj: ./lampe/obj/2.obj" position="3.84572 0 0" scale="200 200 200" rotation="0 90 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: 179 90 0" loop="true></a-entity>
-      
-
-
-
-
-
-
-
-      
+ 
+    <a-entity id="mur1" obj-model="obj: ./lampe/obj/1.obj" scale="200 200 200" position="0 0 3.866" rotation="0 0 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: 179 0 0"; loop="true"></a-entity>
+    <a-entity id="mur2" obj-model="obj: ./lampe/obj/1.obj" scale="200 200 200" position="0 0 -3.85199" rotation="0 0 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: -179 0 0" loop="true"></a-entity>
+    <a-entity id="mur3" obj-model="obj: ./lampe/obj/2.obj" position="-3.85914 0 0" scale="200 200 200" rotation="0 90 0" shadow="cast: true; receive: true" animation="dir: alternate ;dur: 10000; easing: linear; property: rotation; to: -181 90 0" loop="true"></a-entity> 
+    <a-entity id="mur4" obj-model="obj: ./lampe/obj/2.obj" position="3.84572 0 0" scale="200 200 200" rotation="0 90 0" shadow="cast: true; receive: true" animation="dir: alternate; dur: 10000; easing: linear; property: rotation; to: 179 90 0" loop="true></a-entity>
+         
       <a-light id="lumiere_filante" light="color: #9aa60e; intensity: 0.2; type: point; castShadow: true" position="0 5 0"></a-light>
 
       <a-entity id="rotation lumiere" position="0 5 0" rotation="0 0 0" animation="dur: 100000; easing: linear; loop: true; property: rotation; to: 0 359 0">     
-<a-sound src="./sound/3624.mp3" autoplay="true" loop="true" position="-5.05333 2.27562 9.52204" volume="1"></a-sound>        
+        <a-sound src="./sound/3624.mp3" autoplay="true" loop="true" position="0 0 0" volume="1"></a-sound>        
         <a-light id="lumiere_filante" light="color: #ff0000; intensity: 0.6; type: point; castShadow: true" position="0 5 -20"></a-light>
-<a-light id="lumiere_filante" light="color: #008000; intensity: 0.6; type: point; castShadow: true" position="0 5 20"></a-light>
-         
-      </a-entity>
+        <a-light id="lumiere_filante" light="color: #008000; intensity: 0.6; type: point; castShadow: true" position="0 5 20"></a-light> 
+    </a-entity>
     
     </a-scene>
   </body>
