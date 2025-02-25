@@ -1,0 +1,14 @@
+# Exported from 3D Builder
+
+newmtl Turquoise_0
+Kd 0.000000 0.627451 0.909804
+
+newmtl Translucent_0
+Kd 0.019608 0.634756 0.911573
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd lampe.png
+
+newmtl FFFFFFFF_0
+Kd 1.000000 1.000000 1.000000
