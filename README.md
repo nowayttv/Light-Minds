@@ -2,6 +2,8 @@
 
 Projet de présentation de la classe de première des STI2D du lycée Louis de Cormontaigne
 
+https://dev.to/mintycrisp/mintys-a-frame-tips-tricks-looping-animation-timeline-3gp3
+
 # TO-DO
 
 - Récupérer les noms des équipes et participants
