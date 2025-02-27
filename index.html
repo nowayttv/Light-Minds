@@ -1,14 +1,61 @@
-<head>
-  <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script> 
-  <script src="https://unpkg.com/aframe-animation-component@^4.1.1/dist/aframe-animation-timeline-component.min.js"></script> 
-  <script src="https://unpkg.com/aframe-animation-timeline-component@1.6.0/dist/aframe-animation-timeline-component.min.js"></script> 
-</head>
- 
-<body>
-  <a-scene animation-timeline__1="timeline: #myTimeline">
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
 
-      <a-entity
+<!-- Basic Animation Loop -->
+<a-entity
+id='animTest0'
+position="-2 1 -3" 
+geometry="primitive: box; height: 1; width: 1; depth: 1;"
+material="shader: flat; color:#4CC3D9"
+
+animation__basic="property: object3D.position.z; from: -3; to: -6; dur: 3000; delay: 0; loop: true; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Animation Set via Delay -->
+<a-entity
+id='animTest1'
+position="-1 1 -3" 
+geometry="primitive: box; height: 1; width: 1; depth: 1;"
+material="shader: flat; color:#EF2D5E"
+
+animation__set1="property: object3D.position.z; from: -3; to: -6; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__set2="property: object3D.position.y; from: 1; to: 3; dur: 3000; delay: 3000; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+></a-entity>
+
+<!-- Animation Set via Events -->
+<a-entity
+id='animTest2'
+position="0 1 -3" 
+geometry="primitive: box; height: 1; width: 1; depth: 1;"
+material="shader: flat; color:#FFC65D"
+
+animation__set1="property: object3D.position.z; from: -3; to: -6; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__set2="property: object3D.position.y; from: 1; to: 3; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: animationcomplete__set1"
+></a-entity>
+
+<!-- Animation Set Loop via Events # 1-->
+<a-entity
+id='animTest3'
+position="1 1 -3" 
+geometry="primitive: box; height: 1; width: 1; depth: 1;"
+material="shader: flat; color:#7BC8A4"
+
+animation__set0="property: object3D.position.z; from: -3; to: -3; dur: 0; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: true; enabled: true;"
+
+animation__set1="property: object3D.position.z; from: -3; to: -6; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: animationcomplete__set0, animationcomplete__set2"
+
+animation__set2="property: object3D.position.y; from: 1; to: 3; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: animationcomplete__set1"
+></a-entity>
+
+<!-- Animation Set Loop via Events #2 -->
+<a-entity
 id='animTest4'
 position="2 1 -3" 
 geometry="primitive: box; height: 1; width: 1; depth: 1;"
@@ -24,6 +71,8 @@ animation__set3="property: object3D.position.z; from: -6; to: -3; dur: 3000; del
 
 animation__set4="property: object3D.position.y; from: 3; to: 1; dur: 3000; delay: 0; loop: false; dir: normal; easing: linear; elasticity: 400; autoplay: false; enabled: true; startEvents: animationcomplete__set3"
 ></a-entity>
-      
-  </a-scene>
-</body>
+
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
